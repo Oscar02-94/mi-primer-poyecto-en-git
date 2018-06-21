@@ -1,0 +1,25 @@
+<form id='login' method='post'>
+    <input type='email' name='' value='' placeholder = 'tu email'>
+    <br></br>
+    <input type='contraseña' name='' value='' placeholder = 'tu contraseña'>
+    <br></br>
+    <input type='submit' value='login'>
+</form>
+
+<script type='text/javascript'>
+const formLogin = Document.querySelector('#login')
+const formData = new formData(formLogin)
+
+formLogin.aadEventListener('submit', event => {
+    event.preventDefault()
+    fetch('/api/login',{
+        method: 'post',
+        body: formData
+    })
+    .then(res => res.json())
+    .then(data => console.log(data))
+
+})
+
+
+</script>
